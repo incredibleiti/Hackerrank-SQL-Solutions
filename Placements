@@ -1,10 +1,12 @@
 //Adding Solution for the placement challenge
 
-Select T1.SName from (
-Select R.ID as SID, R.Name as SName, S1.ID as FID, S1.Name as FName from 
-(Select S.ID as ID, S.Name as Name, F.Friend_ID as Friend_ID from Friends F 
-join Students S on F.ID = S.ID) as R 
-inner join Students S1 on S1.ID = R.Friend_ID) as T1 
-inner join Packages P1 on P1.ID = T1.SID
-inner join Packages P2 on P2.ID = T1.FID
-where P2.Salary > P1.Salary order by P2.Salary;
+	Select T1.SName from (
+						Select R.ID as SID, R.Name as SName, S1.ID as FID, S1.Name as FName from 
+							(Select S.ID as ID, S.Name as Name, F.Friend_ID as Friend_ID from Friends F 
+			 				join Students S on F.ID = S.ID) as R 
+						inner join Students S1 on S1.ID = R.Friend_ID) as T1 
+	inner join Packages P1 on P1.ID = T1.SID
+	inner join Packages P2 on P2.ID = T1.FID
+	where P2.Salary > P1.Salary order by P2.Salary;
+	
+	-- The problem statement can be found at https://www.hackerrank.com/challenges/placements/problem
