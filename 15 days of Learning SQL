@@ -1,0 +1,9 @@
+Select t.S1, t.c,t.i, row_number() over (partition by t.S1 order by t.c desc,t.i asc ) from 
+(
+    Select S.submission_date as S1, 
+    Count(S.hacker_id) as c, 
+    S.hacker_id as i
+    from Submissions S
+    where S.submission_date>='2016-03-01' and S.submission_date<='2016-03-06'
+    Group by S.submission_date, S.hacker_id
+)t ;
